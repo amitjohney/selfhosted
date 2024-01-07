@@ -1,0 +1,17 @@
+name: selfhosted_workflow
+on:
+  push:
+    branches:
+    - main
+    - feature
+
+jobs:
+  myjob:
+    runs-on: [self-hosted,linux,prod]
+    steps:
+    - name: Install python
+      run: apt-get install -y python3
+    - name: Checkout code
+      run: actions/checkout@v4
+    - name: Execute python code
+      run: python3 test.py
